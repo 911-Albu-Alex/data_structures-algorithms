@@ -1,8 +1,6 @@
 #include "SortedBag.h"
 #include "SortedBagIterator.h"
 #include <exception>
-#include <typeinfo>
-#include <string>
 using namespace std;
 
 SortedBag::SortedBag(Relation r) {
@@ -35,6 +33,7 @@ bool SortedBag::remove(TComp e) {
 	if (found){
 	    for (index=found_at_index;index<this->current_elements-1;index++)
 	        this->elements[index] = this->elements[index+1];
+	    this->current_elements--;
 	    return found;
 	}
 	else{
