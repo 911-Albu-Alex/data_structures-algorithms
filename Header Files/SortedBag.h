@@ -16,6 +16,7 @@ private:
     int capacity;
 	TElem* elements;
 	int current_elements;
+	Relation relation;
 
 public:
 	//constructor

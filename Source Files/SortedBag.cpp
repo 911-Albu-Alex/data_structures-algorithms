@@ -1,24 +1,59 @@
 #include "SortedBag.h"
 #include "SortedBagIterator.h"
+#include <exception>
+#include <typeinfo>
+#include <string>
+using namespace std;
 
 SortedBag::SortedBag(Relation r) {
-	//TODO - Implementation
+    if (strcmp(typeid(r).name(), "bool") !=0){
+        throw exception();
+    }
+    this->current_elements = 0;
+    this->relation = r;
+    this->elements = new TElem[this->capacity];
 }
 
 void SortedBag::add(TComp e) {
-	//TODO - Implementation
+	if (this->current_elements == this->capacity){
+	    throw exception();
+	}
+	this->elements[this->current_elements] = e;
+	this->current_elements++;
+	qsort(this->elements, this->current_elements, sizeof(int),
+          reinterpret_cast<_CoreCrtNonSecureSearchSortCompareFunction>(this->relation));
 }
 
 
 bool SortedBag::remove(TComp e) {
-	//TODO - Implementation
-	return false;
+	int index=0, found_at_index=0;
+    bool found=false;
+    while(index < this->current_elements && !found){
+        if (this->elements[index] == e){
+            found = true;
+            found_at_index = index;
+        }
+        index++;
+    }
+	if (found){
+	    for (index=found_at_index;index<this->current_elements-1;index++)
+	        this->elements[index] = this->elements[index+1];
+	    return found;
+	}
+	else{
+	    return found;
+	}
 }
 
 
 bool SortedBag::search(TComp elem) const {
-	//TODO - Implementation
-	return false;
+	int index = 0;
+	bool found = false;
+	while(index < this->current_elements && !found){
+	    if (this->elements[index] == elem) found = true;
+	    index++;
+	}
+	return found;
 }
 
 
@@ -47,5 +82,5 @@ SortedBagIterator SortedBag::iterator() const {
 
 
 SortedBag::~SortedBag() {
-	//TODO - Implementation
+	delete[] this->elements;
 }
