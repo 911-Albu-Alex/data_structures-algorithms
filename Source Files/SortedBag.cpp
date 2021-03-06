@@ -6,9 +6,6 @@
 using namespace std;
 
 SortedBag::SortedBag(Relation r) {
-    if (strcmp(typeid(r).name(), "bool") !=0){
-        throw exception();
-    }
     this->current_elements = 0;
     this->relation = r;
     this->elements = new TElem[this->capacity];
@@ -58,21 +55,28 @@ bool SortedBag::search(TComp elem) const {
 
 
 int SortedBag::nrOccurrences(TComp elem) const {
-	//TODO - Implementation
-	return 0;
+	int index=0,count=0;
+	while(index<this->current_elements){
+	    if (this->elements[index] == elem) count++;
+	    index++;
+	}
+	return count;
 }
 
 
 
 int SortedBag::size() const {
-	//TODO - Implementation
-	return 0;
+	return this->current_elements;
 }
 
 
 bool SortedBag::isEmpty() const {
-	//TODO - Implementation
-	return false;
+	if (this->current_elements == 0)
+	    return true;
+	else if (this->current_elements > 0)
+	    return false;
+	else
+	    throw exception();
 }
 
 

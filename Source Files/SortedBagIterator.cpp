@@ -5,24 +5,31 @@
 using namespace std;
 
 SortedBagIterator::SortedBagIterator(const SortedBag& b) : bag(b) {
-	//TODO - Implementation
+	this->current_element = 0;
 }
 
 TComp SortedBagIterator::getCurrent() {
-	//TODO - Implementation
-	return NULL_TCOMP;
+	if (this->current_element >= bag.current_elements){
+        throw exception();
+	}
+	return this->bag.elements[this->current_element];
 }
 
 bool SortedBagIterator::valid() {
-	//TODO - Implementation
+    if (this->current_element < bag.current_elements){
+        return true;
+    }
 	return false;
 }
 
 void SortedBagIterator::next() {
-	//TODO - Implementation
+    if (this->current_element >= bag.current_elements){
+        throw exception();
+    }
+    this->current_element++;
 }
 
 void SortedBagIterator::first() {
-	//TODO - Implementation
+	this->current_element=0;
 }
 
