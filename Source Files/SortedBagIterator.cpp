@@ -9,21 +9,21 @@ SortedBagIterator::SortedBagIterator(const SortedBag& b) : bag(b) {
 }
 
 TComp SortedBagIterator::getCurrent() {
-	if (this->current_element >= bag.current_elements){
+	if (this->current_element >= this->bag.current_elements){
         throw exception();
 	}
 	return this->bag.elements[this->current_element];
 }
 
 bool SortedBagIterator::valid() {
-    if (this->current_element < bag.current_elements){
+    if (this->current_element < this->bag.current_elements){
         return true;
     }
 	return false;
 }
 
 void SortedBagIterator::next() {
-    if (this->current_element >= bag.current_elements){
+    if (this->current_element >= this->bag.current_elements){
         throw exception();
     }
     this->current_element++;
