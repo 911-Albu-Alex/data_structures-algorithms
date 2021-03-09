@@ -13,10 +13,12 @@ void SortedBag::add(TComp e) {
 	if (this->current_elements == this->capacity){
 	    throw exception();
 	}
-	this->elements[this->current_elements] = e;
+	int index=0;
+	while(index<this->current_elements&&!this->relation(e, this->elements[index])) index++;
 	this->current_elements++;
-	qsort(this->elements, this->current_elements, sizeof(int),
-          reinterpret_cast<_CoreCrtNonSecureSearchSortCompareFunction>(this->relation));
+	for(int i = this->current_elements-1;i>index;i--)
+	    this->elements[i] = this->elements[i-1];
+	this->elements[index] = e;
 }
 
 
