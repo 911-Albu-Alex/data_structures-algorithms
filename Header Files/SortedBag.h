@@ -1,6 +1,5 @@
 #pragma once
 //DO NOT INCLUDE SORTEDBAGITERATOR
-#include <limits.h>
 //DO NOT CHANGE THIS PART
 typedef int TComp;
 typedef TComp TElem;
@@ -13,7 +12,7 @@ class SortedBag {
 	friend class SortedBagIterator;
 
 private:
-    int capacity=SHRT_MAX;
+    int capacity = 1;
 	TElem* elements;
 	int current_elements;
 	Relation relation;
@@ -21,6 +20,9 @@ private:
 public:
 	//constructor
 	SortedBag(Relation r);
+
+	//resize dynamic_array
+	void resize();
 
 	//adds an element to the sorted bag
 	void add(TComp e);

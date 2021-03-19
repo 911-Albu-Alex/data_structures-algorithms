@@ -7,6 +7,7 @@ using namespace std;
 SortedBagIterator::SortedBagIterator(const SortedBag& b) : bag(b) {
 	this->current_element = 0;
 }
+// Theta(1)
 
 TComp SortedBagIterator::getCurrent() {
 	if (this->current_element >= this->bag.current_elements){
@@ -14,6 +15,7 @@ TComp SortedBagIterator::getCurrent() {
 	}
 	return this->bag.elements[this->current_element];
 }
+// Theta(1)
 
 bool SortedBagIterator::valid() {
     if (this->current_element < this->bag.current_elements){
@@ -21,6 +23,7 @@ bool SortedBagIterator::valid() {
     }
 	return false;
 }
+// Theta(1)
 
 void SortedBagIterator::next() {
     if (this->current_element >= this->bag.current_elements){
@@ -28,8 +31,10 @@ void SortedBagIterator::next() {
     }
     this->current_element++;
 }
+// Theta(1)
 
 void SortedBagIterator::first() {
 	this->current_element=0;
 }
+// Theta(1)
 
