@@ -46,6 +46,9 @@ public:
 	//checks if the sorted bag is empty
 	bool isEmpty() const;
 
-	//destructor
+    //counts and returns the number of distinct elements in the SortedBag
+    int distinctCount() const;
+
+    //destructor
 	~SortedBag();
 };

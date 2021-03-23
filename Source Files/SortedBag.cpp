@@ -113,6 +113,16 @@ SortedBagIterator SortedBag::iterator() const {
 }
 // Theta(1)
 
+int SortedBag::distinctCount() const {
+    if(this->isEmpty()) return 0;
+    int count = 1;
+    for (int i=0;i<this->current_elements-1;i++)
+        if(this->elements[i]!=this->elements[i+1])
+            count++;
+    return count;
+}
+// Theta(n)
+
 
 SortedBag::~SortedBag() {
 	delete[] this->elements;

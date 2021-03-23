@@ -34,6 +34,9 @@ void testAll() {
 	assert(it.valid() == false);
 	it.first();
 	assert(it.valid() == true);
-
+	sb.add(5);
+    assert(sb.distinctCount() == 5);
+    assert(sb.remove(0) == true);
+    assert(sb.distinctCount() == 4);
 }
 
